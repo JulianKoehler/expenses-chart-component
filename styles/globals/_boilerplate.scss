@@ -1,0 +1,25 @@
+@use '../util';
+
+:root {
+  --edges: 16px;
+}
+
+html {
+  box-sizing: border-box;
+  color: var(--dark-brown);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--background);
+  font-family: util.$primary-font;
+}

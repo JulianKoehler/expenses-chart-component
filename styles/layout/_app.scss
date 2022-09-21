@@ -1,0 +1,206 @@
+@use '../util/'as util;
+
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include util.breakpoint-down(440px) {
+        transform: scale(0.75);
+    }
+
+    @include util.breakpoint-down(375px) {
+        transform: scale(0.68);
+    }
+
+    @include util.breakpoint-down(320px) {
+        transform: scale(0.6);
+    }
+}
+
+.app-container {
+
+    .balance {
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--soft-red);
+        color: white;
+        border-radius: var(--edges);
+        padding: 1.3em;
+        margin-bottom: 1.2rem;
+
+        &__left-side {
+            margin-left: 0.4em;
+
+            p {
+                margin-bottom: 0.2em;
+                font-size: util.$small;
+            }
+
+            &__amount {
+                font-size: util.$medium;
+                font-weight: 700;
+            }
+        }
+
+        &__right-side {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-right: 1.5rem;
+
+            &__circle {
+                display: flex;
+                position: absolute;
+                width: 2.5rem;
+                height: 2.5rem;
+                border-radius: 50%;
+                background-color: var(--dark-brown);
+
+                &::before {
+                    content: "";
+                    position: relative;
+                    right: 1.35rem;
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    border-radius: 50%;
+                    border: 2px solid white;
+                }
+            }
+        }
+
+    }
+
+    .dashboard {
+        background-color: #f5f5f5;
+        border-radius: var(--edges);
+        padding: 2rem;
+
+        &__heading h1 {
+            font-size: util.$medium;
+            margin-bottom: 1rem;
+        }
+
+        &__chart {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 200px;
+            padding-top: 0.5rem;
+            border-bottom: 2px solid var(--background);
+
+            &__bars {
+                display: flex;
+                justify-content: space-around;
+                align-items: flex-end;
+                height: 70%;
+
+                &__bar {
+                    position: relative;
+                    width: 9%;
+                    border-radius: 0.375em;
+                    background-color: var(--soft-red);
+                    transition: all 0.35s;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: var(--soft-red-hover);
+                    }
+
+                    &:active {
+                        transform: scale(1.1);
+                    }
+
+                    &__spent-mon,
+                    &__spent-tue,
+                    &__spent-wed,
+                    &__spent-thu,
+                    &__spent-fri,
+                    &__spent-sat,
+                    &__spent-sun {
+                        position: absolute;
+                        top: -38px;
+                        right: -8px;
+                        text-align: center;
+                        font-size: util.$small;
+                        font-weight: 700;
+                        background-color: var(--dark-brown);
+                        color: white;
+                        padding: 0.6em;
+                        border-radius: 0.5em;
+                        display: none;
+                        transition: all 0.35s;
+                    }
+                }
+            }
+
+            &__bar-labels {
+                display: flex;
+                justify-content: space-between;
+
+                div {
+                    font-size: util.$small;
+                    color: var(--grey);
+                    pointer-events: none;
+                    width: 4em;
+                    text-align: center;
+                    margin: 0.3rem 0 0.7rem 0;
+                }
+            }
+        }
+
+        &__total-section {
+            display: flex;
+            justify-content: space-between;
+
+
+            &__left-side {
+                margin-top: 1.5em;
+
+                p {
+                    font-size: util.$small;
+                    color: var(--grey);
+                    margin-bottom: 0;
+                }
+
+                .total-amount {
+                    font-size: util.$large;
+                    font-weight: 700;
+                }
+            }
+
+            &__right-side {
+                display: flex;
+                flex-direction: column;
+                margin-top: 1.5em;
+                justify-content: flex-end;
+                font-size: util.$small;
+
+                &__percentage-increase {
+                    text-align: right;
+                    font-weight: 700;
+                }
+
+                p {
+                    color: var(--grey);
+                    margin-bottom: 0;
+                }
+            }
+
+        }
+    }
+}
+
+.current {
+    background-color: var(--cyan) !important;
+
+    &:hover {
+        background-color: var(--cyan-hover) !important;
+    }
+}
+
+.clicked {
+    display: block !important;
+}

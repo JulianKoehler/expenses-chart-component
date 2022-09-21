@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="./dist/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <title>Expenses chart component</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="app-container">
+      <div class="balance">
+        <div class="balance__left-side">
+          <p>
+            My balance
+          </p>
+          <div class="balance__left-side__amount">
+            $921.48
+          </div>
+        </div>
+        <div class="balance__right-side">
+          <div class="balance__right-side__circle"></div>
+        </div>
+      </div>
+      <div class="dashboard">
+        <div class="dashboard__heading">
+          <h1>
+            Spending - Last 7 days
+          </h1>
+        </div>
+        <div class="dashboard__chart">
+          <div class="dashboard__chart__bars">
+            <div class="dashboard__chart__bars__bar mon">
+              <div class="dashboard__chart__bars__bar__spent-mon"></div>
+            </div>
+            <div class="dashboard__chart__bars__bar tue">
+              <div class="dashboard__chart__bars__bar__spent-tue"></div>
+            </div>
+            <div class="dashboard__chart__bars__bar wed">
+              <div class="dashboard__chart__bars__bar__spent-wed"></div>
+            </div>
+            <div class="dashboard__chart__bars__bar thu">
+              <div class="dashboard__chart__bars__bar__spent-thu"></div>
+            </div>
+            <div class="dashboard__chart__bars__bar fri">
+              <div class="dashboard__chart__bars__bar__spent-fri"></div>
+            </div>
+            <div class="dashboard__chart__bars__bar sat">
+              <div class="dashboard__chart__bars__bar__spent-sat"></div>
+            </div>
+            <div class="dashboard__chart__bars__bar sun">
+              <div class="dashboard__chart__bars__bar__spent-sun"></div>
+            </div>
+          </div>
+          <div class="dashboard__chart__bar-labels">
+            <div>mon</div>
+            <div>tue</div>
+            <div>wed</div>
+            <div>thu</div>
+            <div>fri</div>
+            <div>sat</div>
+            <div>sun</div>
+          </div>
+        </div>
+        <div class="dashboard__total-section">
+          <div class="dashboard__total-section__left-side">
+            <p>
+              Total this week
+            </p>
+            <div class="total-amount"></div>
+          </div>
+          <div class="dashboard__total-section__right-side">
+            <div class="dashboard__total-section__right-side__percentage-increase">
+              +2.4%
+            </div>
+            <p>
+              from last week
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/app.js"></script>
+</body>
+
+</html>
