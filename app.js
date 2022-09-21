@@ -1,10 +1,6 @@
 'use strict'
 
-let spendings; // declaring the spendings object which will be containing the JSON data
-
-await fetch("./data.json") // getting the data from the JSON
-.then(response => response.json())
-.then(data => spendings = data);
+import spendings from './data.json' assert {type: 'json'}; // getting the data from the JSON, does not work without a local server (e.g. Liveserver VScode DOES work)
 
 // getting the balance div and total div
 const balanceDiv = document.querySelector(".balance__left-side__amount")
