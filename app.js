@@ -1,39 +1,10 @@
 'use strict'
 
-//import spendingsJson from './data.json' assert {type: 'json'}; // getting the data from the JSON, does not work without a local server (e.g. Liveserver VScode DOES work)
+let spendings; // declaring the spendings object which will be containing the JSON data
 
-//unfortunately mobile devices seem to not support fetching local JSON data, which is why I had to save the JSON within the JS file
-const spendings = [
-    {
-      "day": "mon",
-      "amount": 17.45
-    },
-    {
-      "day": "tue",
-      "amount": 34.91
-    },
-    {
-      "day": "wed",
-      "amount": 52.36
-    },
-    {
-      "day": "thu",
-      "amount": 31.07
-    },
-    {
-      "day": "fri",
-      "amount": 23.39
-    },
-    {
-      "day": "sat",
-      "amount": 43.28
-    },
-    {
-      "day": "sun",
-      "amount": 25.48
-    }
-  ]
-
+await fetch("./data.json") // getting the data from the JSON
+.then(response => response.json())
+.then(data => spendings = data);
 
 // getting the balance div and total div
 const balanceDiv = document.querySelector(".balance__left-side__amount")
@@ -73,7 +44,7 @@ const hoverEffect = () => {
     }))
 }
 
-// simply an effect that makes the money value stay on the page if the user clicks the bar
+// simply an effect that makes the money value stay on the page if the user clicks the bar, especially importn for mobile devices which do not have any hover
 const clickEffect = () => {
     bars.forEach(bar => bar.addEventListener('click', () => {
         bar.firstElementChild.classList.toggle("clicked")
@@ -82,7 +53,7 @@ const clickEffect = () => {
 
 //determine which bar represents the real current day of the week
 const getCurrentDay = () => {
-    const day = new Date().getDay(); // returns a "1" for monday, a "2" for tuesday etc. => we make us of this within this switch statement!
+    const day = new Date().getDay(); // returns a "1" for monday, a "2" for tuesday etc. => we make use of this within this switch statement!
     switch (day) {
         case 1: 
             bars.forEach(bar => bar.classList.remove("current"));
@@ -122,12 +93,12 @@ const getSpendings = () => {
     }
 }
 
-// This function shall determine the bar height value in percent relative to the biggest amount, which is 100% bar height
+// This function shall determine the height for each bar in percent relative to the biggest amount, which is 100% bar height
 const getBarHeight = () => {
     const spendingsMap = spendings.map(day => day.amount) // getting an array of only the amount property values
     const highest = Math.max(...spendingsMap) // using spread operator to determine the highest value in the array
 
-    const barHeights = [] // creating an array of all percentage values for the bars as height value
+    const barHeights = [] // creating an array of all height values for the bars in percentage
 
     for (const day of spendings) { // using an ES6 for loop to calculate each value
         barHeights.push(Math.round(day.amount / highest * 100))
@@ -141,7 +112,7 @@ const getBarHeight = () => {
 }
 
 const getBalance = () => {
-    let balance = 1800; // hard coded for now, initial balance the user has got
+    let balance = 1800; // hard coded for now, initial balance the user has got on the bank account
     for (const day of spendings) { // reducing the balance by the money that was spent each day
         balance -= day.amount;
     }
