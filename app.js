@@ -43,7 +43,7 @@ const hoverEffect = () => {
 // simply an effect that makes the money value stay on the page if the user clicks the bar, especially importn for mobile devices which do not have any hover
 const clickEffect = () => {
     bars.forEach(bar => bar.addEventListener('click', () => {
-        bar.firstElementChild.classList.toggle("clicked")
+        bar.firstElementChild.classList.toggle("clicked") // the "clicked" class simply adds the display property "block" to the money div
     }))
 }
 
